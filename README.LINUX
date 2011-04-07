@@ -1,0 +1,22 @@
+Some tricks you might have to play with MATLAB on Linux :)
+
+In my case, I kept receiving errors about libraw1394.so.8 was missing and GLIBCXX_3.4.11 was required by OpenCV.
+
+Here's how I went about fixing things.
+
+1) the libraw1394.so.8 problem...
+
+cd ${MATLABROOT}/bin/gl
+mkdir oldlibs
+mv libdc1394.so.22* ./oldlibs
+
+2) the GLIBCXX_3.4.11 problem
+
+cd ${MATLABROOT}/sys/os/glnxa64
+mkdir oldlibs
+mv libgcc_s.so.1 ./oldlibs
+mv libstdc++.so.6* ./oldlibs
+
+Hope this helps!
+Will
+
