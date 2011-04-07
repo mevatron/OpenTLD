@@ -19,19 +19,19 @@
 clc; clear all; cd mex;
 
 % edit based on your instalation folder
-include = ' -Ic:\OpenCV2.2\include\opencv\ -Ic:\OpenCV2.2\include\';
-libpath = 'C:\OpenCV2.2\CMake\lib\Release\';
+include = ' -I/usr/local/include/opencv/';
+libpath = '/usr/local/lib/';
 
 % =========================================================================
 
 lib = [];
-files = dir([libpath '*.lib']);
+files = dir([libpath '*.so']);
 for i = 1:length(files)
     lib = [lib ' ' libpath files(i).name];
 end
 eval(['mex lk.cpp -O' include lib]);
 mex -O -c tld.cpp
-mex -O fern.cpp tld.obj
+mex -O fern.cpp tld.o
 mex -O linkagemex.cpp  
 mex -O bb_overlap.cpp  
 mex -O warp.cpp        
