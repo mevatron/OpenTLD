@@ -6,7 +6,7 @@ Here's how I went about fixing things.
 
 1) the libraw1394.so.8 problem...
 
-cd ${MATLABROOT}/bin/gl
+cd ${MATLABROOT}/bin/glnxa64
 mkdir oldlibs
 mv libdc1394.so.22* ./oldlibs
 
@@ -16,6 +16,8 @@ cd ${MATLABROOT}/sys/os/glnxa64
 mkdir oldlibs
 mv libgcc_s.so.1 ./oldlibs
 mv libstdc++.so.6* ./oldlibs
+
+By moving the libraries we force MATLAB to look at the system libraries, which is the behavior we would like :)
 
 Hope this helps!
 Will
